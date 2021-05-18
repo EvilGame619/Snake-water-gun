@@ -1,0 +1,85 @@
+import random as ran
+import sys
+print("        _____.x._____ Snake Water Gun _____.x._____")
+print("""\n Rules:
+\n1. There will be total 10 rounds, Whoever wins the most rounds will win the game.
+2. Snake will beat Water.
+3. Water will beat Gun.
+3. Gun will beat Snake.
+4. For Snake type s.
+5. For Gun type g.
+6. For water type w.""")
+def game():
+    a = 1
+    y_points = 0
+    c_points = 0
+    while a <= 10:
+        lst = ['s', 'w', 'g']
+        b = ran.choice(lst)
+        p = str(input("***Enter your choice : "))
+        if p == 's' and b == 's':
+            print('\n*Tie')
+            print('\n*You choose snake and computer also choses snake.')
+            print('*Nobody gets a point')
+        elif p == 'w' and b == 'w':
+            print('*\nTie')
+            print('\n*You choose water and computer also choses water.')
+            print('*Nobody gets a point')
+        elif p == 'g' and b == 'g':
+            print('*\nTie')
+            print('\n*You choose gun and computer also choses gun.')
+            print('*Nobody gets a point')
+        elif p == 's' and b == 'w':
+            y_points = y_points + 1
+            print("\n*You choose snake and computer choose water.")
+            print("\n*You won this round")
+            print("*You got 1 point")
+        elif p == 'w' and b == 's':
+            c_points = c_points + 1
+            print("\n*You choose water and computer choose snake.")
+            print("\n*Computer won this round")
+            print("*Computer got 1 point")
+        elif p == 's' and b == 'g':
+            c_points = c_points + 1
+            print("\n*You choose Snake and computer choose Gun.")
+            print("\n*Computer won this round")
+            print("*Computer got 1 point")
+        elif p == 'g' and b == 's':
+            y_points = y_points + 1
+            print("\n*You choose Gun and computer choose snake.")
+            print("\n*You won this round")
+            print("*You got 1 point")
+        elif p == 'w' and b == 'g':
+            y_points = y_points + 1
+            print("\n*You choose Water and computer choose Gun.")
+            print("\n*You won this round")
+            print("*You got 1 point")
+        elif p == 'g' and b == 'w':
+            c_points = c_points + 1
+            print("\n*You choose Gun and computer choose Water.")
+            print("\n*Computer won this round")
+            print("*Computer got 1 point")
+        else:
+            print("Invalid input!")
+            continue
+        print("\nNo. of rounds Left = ", 10 - a)
+        a = a + 1
+        if a > 10:
+            print("\nGame Over\n")
+
+    if c_points > y_points:
+        print("Computer Won")
+    elif c_points < y_points:
+        print("You won")
+    else: print("Game has tied")
+    print()
+    print(f"Your points are {y_points} and computer points are {c_points}")
+print(game())
+print()
+while True:
+    c = str(input("Do you want to play again ? (yes/no) = "))
+    if c == 'yes':
+        print(game())
+    else:
+        sys.exit()
+            
